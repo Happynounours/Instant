@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -57,32 +58,35 @@ class Login extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 hintText: 'Mot de passe',
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.remove_red_eye),
+                ),
               ),
               style: TextStyle(fontSize: 25),
             ),
           ),
         ),
+
+
+
+
         Padding(
-          padding: const EdgeInsets.only(right: 50, top: 10),
+          padding: const EdgeInsets.only(right: 50, top: 10, bottom: 30),
           child: Align(
             alignment: Alignment.centerRight,
             child: Container(
-              child: Text(
-                "Forgot your password",
+              child:
+
+              Text(
+                "Mot de passe oublié",
               ),
             ),
           ),
         ),
-        // TextButton(
-        //     child: Text("Se connecter"),
-        //     onPressed: () {},
-        //     style:
-        //     ButtonStyle(
-        //       backgroundColor: MaterialStateProperty.all(Color.fromARGB(255, 81, 81, 81)),
-        //       foregroundColor: MaterialStateProperty.all(Colors.white),
-        //       overlayColor: MaterialStateProperty.all(Color.fromARGB(255, 107, 27, 91)),
-        //     ),
-        // ),
+
+
+
 
         ElevatedButton(
           onPressed: () {},
@@ -90,25 +94,39 @@ class Login extends StatelessWidget {
           style: ElevatedButton.styleFrom(
               primary: Color.fromARGB(255, 81, 81, 81),
               fixedSize: const Size(320, 35),
-              textStyle: TextStyle(fontSize: 16,)),
+              textStyle: TextStyle(
+                fontSize: 16,
+              )),
         ),
-
-
-        Row(
-          children: <Widget>[
-    Icon( Icons.favorite,),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              IconButton(
+                  icon: FaIcon(FontAwesomeIcons.google,
+                      size: 35, color: Colors.white),
+                  onPressed: () {}),
+              IconButton(
+                  icon: FaIcon(
+                    FontAwesomeIcons.facebook,
+                    size: 35,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {}),
+            ],
+          ),
         ),
-
         ElevatedButton(
           onPressed: () {},
           child: Text('Créer un nouveau compte'),
           style: ElevatedButton.styleFrom(
               primary: Color.fromARGB(255, 81, 81, 81),
               fixedSize: const Size(320, 35),
-              textStyle: TextStyle(fontSize: 16,)),
+              textStyle: TextStyle(
+                fontSize: 16,
+              )),
         ),
-
       ],
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:instant/connexion/Login.dart';
 
+import 'inscription/register.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,25 +12,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       home: Scaffold(
-            body: Center(
-        child: Container(
+        body: Container(
+        height: double.infinity,
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color.fromARGB(255, 108, 187, 228),
-                  Color.fromARGB(255, 94, 14, 185),
-                ],
-              )),
-            child: Login(),
 
+                gradient: LinearGradient(
+
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 108, 187, 228),
+                Color.fromARGB(255, 94, 14, 185),
+              ],
+
+            )),
+            // child: Login(),
+            // child: register(),
+            child: register(),
           ),
-        ),
       ),
-      );
-
+    );
   }
 }
