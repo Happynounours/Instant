@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:instant/connexion/Login.dart';
+import 'package:instant/motdepasseoublie/SendCode.dart';
+import 'package:instant/motdepasseoublie/SendEmail.dart';
 
 import 'inscription/register.dart';
 
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
             )),
             // child: Login(),
             // child: register(),
-            child: register(),
+            child: SendCode(),
           ),
       ),
     );
