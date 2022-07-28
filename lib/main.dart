@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instant/motdepasseoublie/changepassword.dart';
-
-import 'inscription/register.dart';
-
+import 'Home/home.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -16,9 +13,7 @@ class MyApp extends StatelessWidget {
         body: Container(
         height: double.infinity,
           decoration: const BoxDecoration(
-
-                gradient: LinearGradient(
-
+              gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
@@ -27,9 +22,7 @@ class MyApp extends StatelessWidget {
               ],
 
             )),
-            // child: Login(),
-            // child: register(),
-            child: changepassword(),
+            child: Home(),
           ),
       ),
     );
