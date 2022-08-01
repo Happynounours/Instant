@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 
-class all extends StatelessWidget {
+import 'allmap.dart';
 
+class all extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          allmap(),
+          allmap(),
+          allmap(),
+          allmap(),
+
+        ],
+      ),
+    );
   }
 }

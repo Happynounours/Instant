@@ -4,7 +4,7 @@ class categorymap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return             Column(
+    return Column(
       children: [
         Padding(
           padding: const EdgeInsets.only(top: 8, right: 8, left: 8),
