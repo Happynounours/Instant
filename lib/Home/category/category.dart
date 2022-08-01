@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instant/Home/category/categorymap.dart';
 
 class category extends StatefulWidget {
   @override
@@ -6,13 +7,6 @@ class category extends StatefulWidget {
 }
 
 class _categoryState extends State<category> {
-  List<String> widgetList = [
-    'assets/Jeux.jpg',
-    'assets/Nature.jpg',
-    'assets/nourriture.jpg',
-    'assets/Nature.jpg'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,49 +17,15 @@ class _categoryState extends State<category> {
           controller: ScrollController(keepScrollOffset: false),
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
-          children: widgetList.map((String value) {
-            return Container(
-              width: 120,
-              height: 160,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(6),
-                image: DecorationImage(
-                    image: AssetImage(value), fit: BoxFit.cover),
-              ),
-              child: const Text(
-                'aze',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20, color: Colors.white),
-              ),
-            );
-          }).toList(),
+          children: [
+              categorymap(),
+              categorymap(),
+              categorymap(),
+              categorymap(),
+              categorymap(),
+          ],
         ),
       ],
     );
-
-    // Column(
-    //     children: <Widget>[
-    //   Container(
-    //     width: 120,
-    //     height: 160,
-    //     child: Card(
-    //       clipBehavior: Clip.antiAliasWithSaveLayer,
-    //       child: Column(
-    //         children: [
-    //           SizedBox(
-    //             width: 335,
-    //             height: 110,
-    //             child: Image.asset(
-    //               'assets/Nature.jpg',
-    //               fit: BoxFit.fill,
-    //             ),
-    //           ),
-    //           Column(children: [Text('Title')])
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // ]);
   }
 }
