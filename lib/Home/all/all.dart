@@ -12,6 +12,11 @@ class all extends StatelessWidget {
           allmap(),
           allmap(),
           allmap(),
+          allmap(),
+          allmap(),
+          allmap(),
+          allmap(),
+          allmap(),
 
         ],
       ),
