@@ -40,6 +40,7 @@ dependencies:
   sticky_headers: ^0.3.0+2
   full_screen_image_null_safe: ^2.0.0
   image_picker: ^0.8.5+3
+  photo_view: ^0.14.0
 
 dev_dependencies:
   flutter_test:

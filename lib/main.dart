@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instant/Home/selectCatAll.dart';
+import 'package:instant/publier_image/publier_image.dart';
+import 'Home/all/all.dart';
 import 'Home/home.dart';
 void main() => runApp(const MyApp());
 
@@ -22,7 +25,7 @@ class MyApp extends StatelessWidget {
               ],
 
             )),
-            child: Home(),
+            child: selectCatAll(),
           ),
       ),
     );
