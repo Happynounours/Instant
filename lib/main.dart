@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:instant/parametres/infos/infos.dart';
+import 'package:instant/parametres/support/support.dart';
 import 'package:instant/publier_image/publier_image.dart';
-import 'Home/home.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
               ],
 
             )),
-            // child: Home(),
-            child: PublierImage(),
+            child: infos(),
+
+
           ),
       ),
     );
