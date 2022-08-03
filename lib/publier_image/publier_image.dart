@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -51,6 +51,11 @@ Future getImage(ImageSource source) async {
                         child:TextField(
                         maxLines: 1,
                         decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 15
+                            )),
                           labelText: "Titre",
                           fillColor: Colors.white,
                           filled: true,
@@ -61,57 +66,80 @@ Future getImage(ImageSource source) async {
                         height: 20,
                       ),
                       Container(
-                        
                         alignment: Alignment.center,
                         child:TextField(
                         maxLines: 5,
                         decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 15
+                            )),
                           labelText: "Description",
                           fillColor: Colors.white,
                           filled: true,
                         ),
                       ) ,
                       )
-                      
                         ],
                       )
-                      
                         : Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                Text("Publier une image", 
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30
+                ) ,),
+                SizedBox(
+                  height: 30,
+                ),
+                  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Column(
-                        children: [
-                          IconButton(
-                              icon: Icon(Icons.camera_alt_outlined),
-                              onPressed: () => getImage(ImageSource.camera),
-                              ),
-                              Text('Appareil photo')
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          IconButton(
-                              icon: Icon(Icons.insert_photo_outlined),
-                              onPressed: () => getImage(ImageSource.gallery),
-                              ),
-                              Text('Gallery')
-                        ],
-                      ),
+                          ElevatedButton(
+                            onPressed: (() => getImage(ImageSource.camera)),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.transparent,
+                              elevation: 0
+                            ),
+                            child: Column(
+                              children: [
+                                Icon(Icons.camera_alt_outlined, size: 80,),
+                                Text("Appareil photo",
+                                style: TextStyle(
+                                  fontSize: 20
+                                ),)
+                              ],
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: (() => getImage(ImageSource.gallery)),
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.transparent,
+                              elevation: 0
+                            ),
+                            child: Column(
+                              children: [
+                                Icon(Icons.image_outlined,size: 80,),
+                                Text("Gallery",
+                                style: TextStyle(
+                                  fontSize: 20
+                                ),)
+                              ],
+                            ),
+                          )
                           
+                        ],
+                      ),     
                     ],
                   ),
-                ),
-              ],
+               
+           
             ),
                     ),
             
             
-            
-          ),
+          
         ],
       ),
     );
