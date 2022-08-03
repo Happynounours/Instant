@@ -22,10 +22,47 @@ class _PublierImageState extends State<PublierImage> {
     });
   }
 
+  String dropdownvalue = 'Categories';  
+ 
+  // List of items in our dropdown menu
+  var items = [   
+    'Categories',
+    'Amour',
+    'Loisirs',
+    'Rencontre',
+    'Voyage',
+    'Autre',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-          child: Column(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: (() {
+            
+          }),
+           icon: Icon(Icons.arrow_back)),
+      ),
+      body: Container(
+        height: double.infinity,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 108, 187, 228),
+                Color.fromARGB(255, 94, 14, 185),
+              ],
+
+            )),
+            // child: Home(),
+            child:           SingleChildScrollView(
+                       child: Column(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(top: 100, right: 100, left: 100),
@@ -53,6 +90,7 @@ class _PublierImageState extends State<PublierImage> {
                                 maxLines: 1,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 15)),
@@ -71,6 +109,7 @@ class _PublierImageState extends State<PublierImage> {
                                 maxLines: 5,
                                 decoration: InputDecoration(
                                   focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
                                       borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 15)),
@@ -79,7 +118,60 @@ class _PublierImageState extends State<PublierImage> {
                                   filled: true,
                                 ),
                               ),
-                            )
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Container(
+              width: 300,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.white, width: 2),
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: DropdownButtonHideUnderline(
+                child:DropdownButton(
+              // Initial Value
+              value: dropdownvalue,
+               
+              // Down Arrow Icon
+              icon: Icon(Icons.keyboard_arrow_down, color: Colors.black,),   
+               
+              // Array list of items
+              items: items.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items,
+                  style: TextStyle(
+                    color: Colors.black,
+
+                  ),),
+                );
+              }).toList(),
+              // After selecting the desired option,it will
+              // change button value to selected value
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownvalue = newValue!;
+                });
+              },
+            ),)
+              
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: (() {
+                
+              }),
+               child: Text("Publier",
+               style: TextStyle(
+                color: Colors.black
+               ),),
+               style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  ),),
                           ],
                         )
                       : Column(
@@ -141,6 +233,13 @@ class _PublierImageState extends State<PublierImage> {
               ),
             ],
       ),
+    ),
+          ),
+
+      
+      
     );
+    
+    
   }
 }
