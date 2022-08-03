@@ -10,13 +10,7 @@ class all extends StatelessWidget {
         children: <Widget>[
           allmap(),
           allmap(),
-          allmap(),
-          allmap(),
-          allmap(),
-          allmap(),
-          allmap(),
-          allmap(),
-          allmap(),
+
 
         ],
       ),
