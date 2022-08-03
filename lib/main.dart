@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
         height: double.infinity,
           decoration: const BoxDecoration(
               gradient: LinearGradient(
+                
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
