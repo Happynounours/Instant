@@ -1,45 +1,34 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:instant/connexion/login.dart';
-import 'package:instant/profil/Profil.dart';
-import 'package:instant/publier_image/publier_image.dart';
-import 'Home/home.dart';
-main() => runApp(MyApp());
+import 'package:instant/inscription/register.dart';
+import 'package:instant/screens/splashscreen_wrapper.dart';
+import 'package:instant/services/authentification.dart';
+import 'package:provider/provider.dart';
+import 'models/user.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {
-          '/': (_) => Login(),
-          Home.routeName: (_) => Home(),
-          PublierImage.routeName: (_) => PublierImage(),
-        },
+    return StreamProvider<AppUser?>.value(
+      value: AuthenticationService().user,
+      initialData: null,
+      child: MaterialApp(
+        home: SplashScreenWrapper(),
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+      routes: {
+          register.routeName:(_) => register(),
+      },
+      ),
+
     );
-    // MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   home: Scaffold(
-    //     body: Container(
-    //     height: double.infinity,
-    //       decoration: const BoxDecoration(
-    //           gradient: LinearGradient(
-
-    //           begin: Alignment.topLeft,
-    //           end: Alignment.bottomRight,
-    //           colors: [
-    //             Color.fromARGB(255, 108, 187, 228),
-    //             Color.fromARGB(255, 94, 14, 185),
-    //           ],
-
-    //         )),
-
-    //         // child: Home(),
-    //         child: PublierImage(),
-    //         // child: Profil(),
-    //       ),
-    //   ),
-    // );
   }
 }

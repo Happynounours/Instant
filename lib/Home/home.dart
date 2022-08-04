@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:instant/Home/selectCatAll.dart';
 
+import '../services/authentification.dart';
+
 class Home extends StatelessWidget {
+  final AuthenticationService _auth = AuthenticationService();
 
 static String routeName = '/home';
 
@@ -19,7 +22,17 @@ static String routeName = '/home';
               'assets/InstantW.png',
               height: 50,
             ),
-          )
+          ),
+              TextButton.icon(
+                  icon: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  label: Text('logout', style: TextStyle(color: Colors.white)),
+                  onPressed: () async {
+                    await _auth.signOut();
+                  }
+              )
         ]),
         backgroundColor: Colors.transparent,
         elevation: 0,
