@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
         register.routeName:(_) => register(),
         selectparametre.routeName: (_) => selectparametre(),
         Login.routeName: (_) => Login(),  
+
       },
       ),
 

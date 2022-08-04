@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../services/authentification.dart';
 
 class Login extends StatefulWidget {
-  static String routeName = '/login';
+  static String routeName= '/login';
   @override
   State<Login> createState() => _LoginState();
 }
