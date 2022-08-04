@@ -30,36 +30,34 @@ class selectparametre extends StatelessWidget {
                       color: Colors.white),
                 ),
               ),
-
-                Padding(
-                  padding: const EdgeInsets.only(top:100),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              IconButton(
-                                  icon: FaIcon(FontAwesomeIcons.bell,
-                                      size: 32, color: Colors.white),
-                                  onPressed: () {}),
-                              Text(
-                                'Notifications',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 32,
-                                    color: Colors.white),
-                              )
-                            ],
-                          ),
+              Padding(
+                padding: const EdgeInsets.only(top: 100),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            IconButton(
+                                icon: FaIcon(FontAwesomeIcons.bell,
+                                    size: 32, color: Colors.white),
+                                onPressed: () {}),
+                            Text(
+                              'Notifications',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 32,
+                                  color: Colors.white),
+                            )
+                          ],
                         ),
                       ),
-
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
@@ -76,11 +74,11 @@ class selectparametre extends StatelessWidget {
                             )
                           ],
                         ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
@@ -97,17 +95,19 @@ class selectparametre extends StatelessWidget {
                             )
                           ],
                         ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Container(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             IconButton(
-                                icon: FaIcon(FontAwesomeIcons.arrowRightFromBracket,
-                                    size: 32, color: Colors.white),
+                                icon: FaIcon(
+                                    FontAwesomeIcons.arrowRightFromBracket,
+                                    size: 32,
+                                    color: Colors.white),
                                 onPressed: () {}),
                             Text(
                               'Déconnexion',
@@ -118,11 +118,11 @@ class selectparametre extends StatelessWidget {
                             )
                           ],
                         ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-                    ],
-                  ),
-                ),
             ],
           ),
         ),
