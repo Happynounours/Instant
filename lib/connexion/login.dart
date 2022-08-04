@@ -2,9 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Login extends StatelessWidget {
+
+static String routeName = '/';
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Scaffold(
+      body: Container(
+        height: double.infinity,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 108, 187, 228),
+                Color.fromARGB(255, 94, 14, 185),
+              ],
+
+            )),
+            // child: Home(),
+            child:
+      
+      SingleChildScrollView(
       child: Column(
         children: <Widget>[
           Padding(
@@ -80,7 +100,9 @@ class Login extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/home');
+            },
             child: Text('Se connecter'),
             style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 81, 81, 81),
@@ -97,7 +119,9 @@ class Login extends StatelessWidget {
                 IconButton(
                     icon: FaIcon(FontAwesomeIcons.google,
                         size: 35, color: Colors.white),
-                    onPressed: () {}),
+                    onPressed: () {
+                      
+                    }),
                 IconButton(
                     icon: FaIcon(
                       FontAwesomeIcons.facebook,
@@ -109,7 +133,9 @@ class Login extends StatelessWidget {
             ),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/publierimage');
+            },
             child: Text('Créer un nouveau compte'),
             style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 81, 81, 81),
@@ -120,6 +146,10 @@ class Login extends StatelessWidget {
           ),
         ],
       ),
+    ),
+      )
     );
+    
+    
   }
 }

@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:instant/Home/selectCatAll.dart';
 
 class Home extends StatelessWidget {
+
+static String routeName = '/home';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title:
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           Container(
