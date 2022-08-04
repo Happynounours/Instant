@@ -4,6 +4,8 @@ import 'package:instant/inscription/register.dart';
 import 'package:instant/screens/splashscreen_wrapper.dart';
 import 'package:instant/services/authentification.dart';
 import 'package:provider/provider.dart';
+import 'Home/home.dart';
+import 'connexion/login.dart';
 import 'models/user.dart';
 
 void main() async {
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
         ),
       routes: {
           register.routeName:(_) => register(),
+          Home.routeName:(_) => Home(),
       },
       ),
 

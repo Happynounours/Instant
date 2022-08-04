@@ -18,6 +18,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
   bool showSignIn = true;
+
   @override
   void dispose() {
     nameController.dispose();
@@ -88,6 +89,8 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
 
 
                     SizedBox(height: 10),
+
+
                     ElevatedButton(
                       child: Text(
                         showSignIn ? "sign In" "sign In" : "Register",
@@ -111,6 +114,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                           }
                         }
                       },
+
                     ),
                     SizedBox(height: 10.0),
                     Text(

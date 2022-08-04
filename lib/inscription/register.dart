@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instant/common/constants.dart';
+
 import 'package:intl/intl.dart';
 
 import '../services/authentification.dart';
@@ -149,8 +151,11 @@ class _registerState extends State<register> {
                       setState(() {
                         loading = false;
                         error = 'Please supply a valid email';
+
+
                       });
                     }
+                    Navigator.pushNamed(context, '/home');
                   }
                 },
                 child: Text('S\'inscrire'),
