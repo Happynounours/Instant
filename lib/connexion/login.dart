@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../services/authentification.dart';
 
 class Login extends StatefulWidget {
-  static String routeName= '/login';
+  static String routeName = '/login';
   @override
   State<Login> createState() => _LoginState();
 }
@@ -17,6 +17,7 @@ class _LoginState extends State<Login> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   bool showSignIn = true;
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -45,99 +46,99 @@ class _LoginState extends State<Login> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 35, right: 35, bottom: 20),
-                        child: Form(
-                            key: _formKey,
-                            child: Column(
-                              children: [
-                                TextFormField(
-                                  controller: emailController,
-                                  validator: (value) => value == null || value.isEmpty
-                                      ? "Enter an email"
-                                      : null,
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          width: 4,
-                                          color: Colors.deepPurpleAccent),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding: EdgeInsets.only(left: 20),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    hintText: 'Email',
+                    padding: EdgeInsets.only(left: 35, right: 35,),
+                    child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              child: TextFormField(
+                                controller: emailController,
+                                validator: (value) =>
+                                    value == null || value.isEmpty
+                                        ? "Enter an email"
+                                        : null,
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 4,
+                                        color: Colors.deepPurpleAccent),
                                   ),
-                                  style: TextStyle(fontSize: 25),
-                                ),
-                                TextFormField(
-                                  controller: passwordController,
-                                  validator: (value) => value != null && value.length < 6
-                                      ? "Enter a password with at least 6 characters"
-                                      : null,
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(width: 4, color: Colors.deepPurpleAccent),
-                                    ),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    contentPadding: EdgeInsets.only(left: 20),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    hintText: 'Mot de passe',
-                                    suffixIcon: IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.remove_red_eye),
-                                    ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding: EdgeInsets.only(left: 20),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
                                   ),
-                                  style: TextStyle(fontSize: 25),
+                                  hintText: 'Email',
                                 ),
-                              ],
-                            )),
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              child: TextFormField(
+                                obscureText: _obscureText,
+                                controller: passwordController,
+                                validator: (value) => value != null &&
+                                        value.length < 6
+                                    ? "Enter a password with at least 6 characters"
+                                    : null,
+                                decoration: InputDecoration(
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 4,
+                                        color: Colors.deepPurpleAccent),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding: EdgeInsets.only(left: 20),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  hintText: 'Mot de passe',
+                                  suffixIcon: IconButton(
+                                    icon: Icon(_obscureText
+                                        ? Icons.visibility
+                                        : Icons.visibility_off),
+                                    onPressed: () {
+                                      setState(() {
+                                        _obscureText = !_obscureText;
+                                      });
+                                    },
+                                  ),
+                                ),
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Container(
+                                child: Text(
+                                  "Mot de passe oublié",
+                                ),
+                              ),
+                            ),
+                            Text(
+                              error,
+                              style:
+                                  TextStyle(color: Colors.red, fontSize: 18.0),
+                            ),
+                          ],
+                        )),
                   ),
                 ],
               ),
             ),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(
-            //     horizontal: 35,
-            //   ),
-            //   child: SizedBox(
-            //     height: 50,
-            //
-            //   ),
-            // ),
-            Padding(
-              padding: const EdgeInsets.only(right: 50, top: 10, bottom: 30),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: Container(
-                  child: Text(
-                    "Mot de passe oublié",
-                  ),
-                ),
-              ),
-            ),
-
-            Text(
-              error,
-              style: TextStyle(color: Colors.red, fontSize: 18.0),
-            ),
-
-
-
-
             ElevatedButton(
               onPressed: () async {
                 if (_formKey.currentState?.validate() == true) {
                   setState(() => loading = false);
                   var password = passwordController.value.text;
                   var email = emailController.value.text;
-                  dynamic result =await _auth.signInWithEmailAndPassword(
-                      email, password);
+                  dynamic result =
+                      await _auth.signInWithEmailAndPassword(email, password);
                   if (result == null) {
                     setState(() {
                       loading = false;
@@ -154,9 +155,6 @@ class _LoginState extends State<Login> {
                     fontSize: 16,
                   )),
             ),
-
-
-
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5),
               child: Row(
