@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instant/common/constants.dart';
+import 'package:intl/intl.dart'; 
 import '../services/authentification.dart';
 
 class register extends StatefulWidget {
@@ -17,6 +19,14 @@ class _registerState extends State<register> {
   bool showSignIn = true;
   bool _obscureText = true;
 
+
+  void toggleView() {
+    setState(() {
+      error= '';  
+      emailController.text = '';
+      passwordController.text = ''; 
+    });
+  }
 
 
   @override

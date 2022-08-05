@@ -14,6 +14,14 @@ class Home extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+            icon:Icon(Icons.settings),
+          )
+        ],
         title:
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           Container(
@@ -23,15 +31,7 @@ class Home extends StatelessWidget {
               height: 50,
             ),
           ),
-          TextButton.icon(
-              icon: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-              label: Text('logout', style: TextStyle(color: Colors.white)),
-              onPressed: () async {
-                await _auth.signOut();
-              })
+              
         ]),
         backgroundColor: Colors.transparent,
         elevation: 0,

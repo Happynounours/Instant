@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:instant/Home/home.dart';
 import 'package:instant/inscription/register.dart';
+import 'package:instant/parametres/selectparametre.dart';
 import 'package:instant/screens/splashscreen_wrapper.dart';
 import 'package:instant/services/authentification.dart';
 import 'package:provider/provider.dart';
@@ -15,20 +17,22 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
+    @override
   Widget build(BuildContext context) {
     return StreamProvider<AppUser?>.value(
       value: AuthenticationService().user,
       initialData: null,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: SplashScreenWrapper(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
       routes: {
-          register.routeName:(_) => register(),
-          Home.routeName:(_) => Home(),
+        Home.routeName: (_) => Home(),
+        register.routeName:(_) => register(),
+        selectparametre.routeName: (_) => selectparametre(),
+        Login.routeName: (_) => Login(),  
       },
       ),
 

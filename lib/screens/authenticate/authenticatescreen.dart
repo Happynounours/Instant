@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:instant/common/constants.dart';
 import 'package:instant/inscription/register.dart';
 import 'package:instant/services/authentification.dart';
