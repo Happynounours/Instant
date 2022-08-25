@@ -17,6 +17,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
   bool loading = false;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final nameController = TextEditingController();
   bool showSignIn = true;
   bool _obscureText = true;
 
@@ -33,59 +34,57 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
   }
 
   void takePhoto() {
-  showDialog(context: context,
-   builder: (context) {
-    return SimpleDialog(
-      backgroundColor: Color.fromARGB(255, 94, 14, 185),
-      children: [
-        Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text('Que voulez-vous faire ?', 
-                        style: TextStyle(
-                          color: Colors.white
-                        ) ,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 108, 187, 228)
+    showDialog(
+        context: context,
+        builder: (context) {
+          return SimpleDialog(
+            backgroundColor: Color.fromARGB(255, 94, 14, 185),
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Que voulez-vous faire ?',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 108, 187, 228)),
+                        onPressed: () => getImage(ImageSource.gallery),
+                        child: Text(
+                          "Choisir une photo",
+                        ),
                       ),
-                      onPressed: () => getImage(ImageSource.gallery),
-                       child: Text(
-                        "Choisir une photo",
-                       ),
-                       ),
-                       SizedBox(
+                      SizedBox(
                         height: 20,
-                       ),
-                        ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 108, 187, 228)
                       ),
-                      onPressed: () => getImage(ImageSource.camera),
-                       child: Text(
-                        "Prendre une photo",
-                       ),
-                       ),
-                          ],
-                        )
-                        
-                      ],
-                    ),
-      ],
-    );
-   });
-}
-
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Color.fromARGB(255, 108, 187, 228)),
+                        onPressed: () => getImage(ImageSource.camera),
+                        child: Text(
+                          "Prendre une photo",
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          );
+        });
+  }
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
@@ -94,6 +93,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
       _formKey.currentState?.reset();
       error = '';
       emailController.text = '';
+      nameController.text = '';
       passwordController.text = '';
       showSignIn = !showSignIn;
     });
@@ -124,13 +124,10 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                         children: [
                           showSignIn
                               ? Container()
-                              :
-                          IconButton(
+                              : IconButton(
                                   icon: FaIcon(FontAwesomeIcons.arrowLeft,
                                       size: 35, color: Colors.white),
-                                  onPressed: () => toggleView()
-                          ),
-
+                                  onPressed: () => toggleView()),
                         ],
                       ),
                     ),
@@ -154,40 +151,42 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                   showSignIn
                                       ? Container()
                                       : Padding(
-                                    padding:  EdgeInsets.symmetric(
+                                          padding: EdgeInsets.symmetric(
                                               vertical: 14),
-                                          child: 
-                                          Positioned(
-                                              bottom: 0,
-                                              right: 25,
-                                              child:  
-                                              Container(
-                      child: _image != null ? Image.file(_image!,
-                      height: 250,
-                      width: 250,
-                      fit: BoxFit.cover,) :
-                                              RawMaterialButton(
-                                                onPressed:
-                                                  takePhoto,
-                                                elevation: 0.0,
-                                                fillColor: Color(0xFFF5F6F9),
-                                                child: Icon(
-                                                  Icons.camera_alt_outlined,
-                                                  color: Colors.blue,
-                                                  size: 50,
-
-                                                ),
-                                                padding: EdgeInsets.all(15.0),
-                                                shape: CircleBorder(),
-                                              )
-                                          ),
-                                      )),
+                                          child: Positioned(
+                                            bottom: 0,
+                                            right: 25,
+                                            child: Container(
+                                                child: _image != null
+                                                    ? Image.file(
+                                                        _image!,
+                                                        height: 250,
+                                                        width: 250,
+                                                        fit: BoxFit.cover,
+                                                      )
+                                                    : RawMaterialButton(
+                                                        onPressed: takePhoto,
+                                                        elevation: 0.0,
+                                                        fillColor:
+                                                            Color(0xFFF5F6F9),
+                                                        child: Icon(
+                                                          Icons
+                                                              .camera_alt_outlined,
+                                                          color: Colors.blue,
+                                                          size: 50,
+                                                        ),
+                                                        padding: EdgeInsets.all(
+                                                            15.0),
+                                                        shape: CircleBorder(),
+                                                      )),
+                                          )),
                                   showSignIn
                                       ? Container()
                                       : Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 12),
                                           child: TextFormField(
+                                            controller: nameController,
                                             validator: (value) =>
                                                 value == null || value.isEmpty
                                                     ? "Pseudo Obligatoire "
@@ -212,9 +211,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                             style: TextStyle(fontSize: 25),
                                           ),
                                         ),
-                                  showSignIn ? SizedBox(height: 50.0):
-                                  Container(),
-
+                                  showSignIn
+                                      ? SizedBox(height: 50.0)
+                                      : Container(),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
                                         vertical: 12),
@@ -296,9 +295,9 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                       if (_formKey.currentState?.validate() ==
                                           true) {
                                         setState(() => loading = true);
-                                        var password =
-                                            passwordController.value.text;
+                                        var password = passwordController.value.text;
                                         var email = emailController.value.text;
+                                        var name = nameController.value.text;
 
                                         dynamic result = showSignIn
                                             ? await _auth
@@ -306,7 +305,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                                     email, password)
                                             : await _auth
                                                 .registerWithEmailAndPassword(
-                                                    email, password);
+                                                    name, email, password);
                                         if (result == null) {
                                           setState(() {
                                             loading = false;

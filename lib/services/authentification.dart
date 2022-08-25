@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:instant/login_register/authenticate.dart';
-
 import '../models/user.dart';
+import 'database.dart';
 
 class AuthenticationService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -26,18 +25,23 @@ class AuthenticationService {
     }
   }
 
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(String name, String email, String password) async {
     try {
       UserCredential result =
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       User? user = result.user;
-      return _userFromFirebaseUser(user);
+      if (user == null) {
+        throw Exception("No user found");
+      } else {
+        await DatabaseService(user.uid).saveUser(name);
+
+        return _userFromFirebaseUser(user);
+      }
     } catch (exception) {
       print(exception.toString());
       return null;
     }
   }
-
 
   Future signOut() async{
     try{

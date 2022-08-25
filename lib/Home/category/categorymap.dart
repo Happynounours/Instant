@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:instant/connexion/login.dart';
 
 class categorymap extends StatelessWidget {
 

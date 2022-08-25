@@ -2,12 +2,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import '../login_register/authenticate.dart';
+import '../models/user.dart';
+import '../screens/splashscreen_wrapper.dart';
 import '../services/authentification.dart';
 
 class selectparametre extends StatelessWidget {
- static String routeName = '/settings';
-   final AuthenticationService _auth = AuthenticationService();
-
+  static String routeName = '/settings';
+  final AuthenticationService _auth = AuthenticationService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,10 +20,12 @@ class selectparametre extends StatelessWidget {
           alignment: Alignment.center,
           child: Text("PARAMETRES"),
         ),
-        // leading: IconButton(onPressed: () {Navigator.pop(context);},
-        // icon: Icon(Icons.arrow_back
-        
-        // ),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -43,91 +48,68 @@ class selectparametre extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-
-                  elevation: 0
-                ),
-                onPressed: (() {
-                  
-                }), 
-                icon: FaIcon(FontAwesomeIcons.bell,
-                      size: 32, color: Colors.white), 
-                      label: Text('Notifications',
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent, elevation: 0),
+                  onPressed: (() {}),
+                  icon: FaIcon(FontAwesomeIcons.bell,
+                      size: 32, color: Colors.white),
+                  label: Text('Notifications',
                       style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32,
-                                  color: Colors.white))),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-
-                  elevation: 0
-                ),
-                onPressed: (() {
-                  
-                }), 
-                icon: FaIcon(FontAwesomeIcons.circleQuestion,
-                                    size: 32, color: Colors.white), 
-                      label: Text('Support',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                          color: Colors.white))),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent, elevation: 0),
+                  onPressed: (() {}),
+                  icon: FaIcon(FontAwesomeIcons.circleQuestion,
+                      size: 32, color: Colors.white),
+                  label: Text('Support',
                       style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32,
-                                  color: Colors.white))),
-                    
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-
-                  elevation: 0
-                ),
-                onPressed: (() {
-                  
-                }), 
-                icon: FaIcon(FontAwesomeIcons.circleInfo,
-                                    size: 32, color: Colors.white), 
-                      label: Text('Infos',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                          color: Colors.white))),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent, elevation: 0),
+                  onPressed: (() {}),
+                  icon: FaIcon(FontAwesomeIcons.circleInfo,
+                      size: 32, color: Colors.white),
+                  label: Text('Infos',
                       style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32,
-                                  color: Colors.white))),
-                    
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.transparent,
-
-                  elevation: 0
-                ),
-                onPressed: 
-                  () async{
-              await _auth.signOut();
-                  }
-                , 
-                icon: FaIcon(
-                                    FontAwesomeIcons.arrowRightFromBracket,
-                                    size: 32,
-                                    color: Colors.white), 
-                      label: Text('Déconnexion',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                          color: Colors.white))),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.transparent, elevation: 0),
+                  onPressed: () async {
+                    await _auth.signOut();
+                    Navigator.of(context).pushAndRemoveUntil(
+                        new MaterialPageRoute(
+                            builder: (context) => new SplashScreenWrapper()),
+                        (route) => false);
+                  },
+                  icon: FaIcon(FontAwesomeIcons.arrowRightFromBracket,
+                      size: 32, color: Colors.white),
+                  label: Text('Déconnexion',
                       style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 32,
-                                  color: Colors.white))),
-                   
-                               
-                          ],
-                        ),
-                      ),
-                       ),
-        );
-     
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                          color: Colors.white))),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

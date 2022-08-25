@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import 'package:instant/connexion/login.dart';
 
 
 
@@ -160,17 +159,17 @@ class _IconeState extends State<Icone> {
             SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-              onPressed: (() {
-                Navigator.pushNamed(context, Login.routeName);
-              }),
-               child: Text("Publier",
-               style: TextStyle(
-                color: Colors.black
-               ),),
-               style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  ),),
+            // ElevatedButton(
+            //   onPressed: (() {
+            //     Navigator.pushNamed(context, Login.routeName);
+            //   }),
+            //    child: Text("Publier",
+            //    style: TextStyle(
+            //     color: Colors.black
+            //    ),),
+            //    style: ElevatedButton.styleFrom(
+            //       primary: Colors.white,
+            //       ),),
                           ],
                         )
                       : Column(

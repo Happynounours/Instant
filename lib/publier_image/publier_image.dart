@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instant/Home/home.dart';
-import 'package:instant/connexion/login.dart';
 import 'package:instant/publier_image/widgets/icone.dart';
 
 class PublierImage extends StatefulWidget {
