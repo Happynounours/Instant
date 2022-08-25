@@ -15,6 +15,13 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
+          TextButton.icon(
+            icon: Icon(Icons.person, color:Colors.white),
+            label: Text('logout', style: TextStyle(color:Colors.white)),
+            onPressed: () async{
+              await _auth.signOut();
+            },
+          ),
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, '/settings');

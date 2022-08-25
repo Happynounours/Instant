@@ -1,39 +1,39 @@
 {
-    "project_info": {
-      "project_number": "729613623796",
-      "project_id": "instant-21dfd",
-      "storage_bucket": "instant-21dfd.appspot.com"
-    },
-    "client": [
-      {
-        "client_info": {
-          "mobilesdk_app_id": "1:729613623796:android:02872cf0841a9270f7d9a1",
-          "android_client_info": {
-            "package_name": "com.happynours.instant"
-          }
-        },
-        "oauth_client": [
-          {
-            "client_id": "729613623796-6fo04hpajrbpelde0sc2i5rsho2i0lu8.apps.googleusercontent.com",
-            "client_type": 3
-          }
-        ],
-        "api_key": [
-          {
-            "current_key": "AIzaSyDDBz4PdkP0nPx_YS9gw6A8LNvXrHbgB88"
-          }
-        ],
-        "services": {
-          "appinvite_service": {
-            "other_platform_oauth_client": [
-              {
-                "client_id": "729613623796-6fo04hpajrbpelde0sc2i5rsho2i0lu8.apps.googleusercontent.com",
-                "client_type": 3
-              }
-            ]
-          }
+  "project_info": {
+    "project_number": "729613623796",
+    "project_id": "instant-21dfd",
+    "storage_bucket": "instant-21dfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:729613623796:android:02872cf0841a9270f7d9a1",
+        "android_client_info": {
+          "package_name": "com.happynours.instant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "729613623796-6fo04hpajrbpelde0sc2i5rsho2i0lu8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDBz4PdkP0nPx_YS9gw6A8LNvXrHbgB88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "729613623796-6fo04hpajrbpelde0sc2i5rsho2i0lu8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
-    ],
-    "configuration_version": "1"
-  }
+    }
+  ],
+  "configuration_version": "1"
+}

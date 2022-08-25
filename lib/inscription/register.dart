@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instant/common/constants.dart';
-import 'package:intl/intl.dart'; 
+import 'package:intl/intl.dart';
 import '../services/authentification.dart';
 
 class register extends StatefulWidget {
@@ -20,11 +19,20 @@ class _registerState extends State<register> {
   bool _obscureText = true;
 
 
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   void toggleView() {
     setState(() {
-      error= '';  
+      _formKey.currentState?.reset();
+      error = '';
       emailController.text = '';
-      passwordController.text = ''; 
+      passwordController.text = '';
+      showSignIn = !showSignIn;
     });
   }
 
