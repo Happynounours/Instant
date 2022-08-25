@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:instant/login_register/authenticate.dart';
 
 import '../models/user.dart';
 

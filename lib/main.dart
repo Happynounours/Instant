@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:instant/parametres/selectparametre.dart';
 import 'package:instant/screens/splashscreen_wrapper.dart';
 import 'package:instant/services/authentification.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        routes: {
+          selectparametre.routeName:(_) => selectparametre()
+        },
       ),
 
     );

@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../common/loading.dart';
 import '../services/authentification.dart';
 
@@ -17,6 +19,68 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
   final passwordController = TextEditingController();
   bool showSignIn = true;
   bool _obscureText = true;
+
+  File? _image;
+  Future getImage(ImageSource source) async {
+    final image = await ImagePicker().pickImage(source: source);
+    if (image == null) return;
+
+    final imageTemporary = File(image.path);
+
+    setState(() {
+      this._image = imageTemporary;
+    });
+  }
+
+  void takePhoto() {
+  showDialog(context: context,
+   builder: (context) {
+    return SimpleDialog(
+      backgroundColor: Color.fromARGB(255, 94, 14, 185),
+      children: [
+        Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('Que voulez-vous faire ?', 
+                        style: TextStyle(
+                          color: Colors.white
+                        ) ,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 108, 187, 228)
+                      ),
+                      onPressed: () => getImage(ImageSource.gallery),
+                       child: Text(
+                        "Choisir une photo",
+                       ),
+                       ),
+                       SizedBox(
+                        height: 20,
+                       ),
+                        ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 108, 187, 228)
+                      ),
+                      onPressed: () => getImage(ImageSource.camera),
+                       child: Text(
+                        "Prendre une photo",
+                       ),
+                       ),
+                          ],
+                        )
+                        
+                      ],
+                    ),
+      ],
+    );
+   });
+}
+
 
   @override
   void dispose() {
@@ -90,13 +154,21 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                   showSignIn
                                       ? Container()
                                       : Padding(
-                                    padding: const EdgeInsets.symmetric(
+                                    padding:  EdgeInsets.symmetric(
                                               vertical: 14),
-                                          child: Positioned(
+                                          child: 
+                                          Positioned(
                                               bottom: 0,
                                               right: 25,
-                                              child: RawMaterialButton(
-                                                onPressed: () {},
+                                              child:  
+                                              Container(
+                      child: _image != null ? Image.file(_image!,
+                      height: 250,
+                      width: 250,
+                      fit: BoxFit.cover,) :
+                                              RawMaterialButton(
+                                                onPressed:
+                                                  takePhoto,
                                                 elevation: 0.0,
                                                 fillColor: Color(0xFFF5F6F9),
                                                 child: Icon(
@@ -109,7 +181,7 @@ class _AuthenticateScreenState extends State<AuthenticateScreen> {
                                                 shape: CircleBorder(),
                                               )
                                           ),
-                                        ),
+                                      )),
                                   showSignIn
                                       ? Container()
                                       : Padding(

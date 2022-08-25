@@ -17,10 +17,10 @@ class selectparametre extends StatelessWidget {
           alignment: Alignment.center,
           child: Text("PARAMETRES"),
         ),
-        leading: IconButton(onPressed: () {Navigator.pop(context);},
-        icon: Icon(Icons.arrow_back
+        // leading: IconButton(onPressed: () {Navigator.pop(context);},
+        // icon: Icon(Icons.arrow_back
         
-        ),),
+        // ),),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
@@ -107,11 +107,11 @@ class selectparametre extends StatelessWidget {
 
                   elevation: 0
                 ),
-                onPressed: (() {
-          FirebaseAuth.instance.signOut().then((value) {
-                                    print('Déconnexion');
-                                  });        
-                }), 
+                onPressed: 
+                  () async{
+              await _auth.signOut();
+                  }
+                , 
                 icon: FaIcon(
                                     FontAwesomeIcons.arrowRightFromBracket,
                                     size: 32,
